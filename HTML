@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma Ganadería Toné 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2d3561 0%, #1e2442 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #dee2e6;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 20px 30px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: -3px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .month-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .month-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .month-number {
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .month-title {
+            font-size: 1.5em;
+            color: #2d3561;
+            font-weight: bold;
+        }
+        
+        .product-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .product-name {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #212529;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .cost-summary {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .cost-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .cost-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .cost-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .cost-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .alert-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .btn-print {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .btn-print:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .tabs, .btn-print {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .tab-content {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐄 CRONOGRAMA GANADERÍA TONÉ 2026</h1>
+            <p>Plan Anual de Vitaminización y Desparasitación | Animales +100kg</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab(0)">📅 Cronograma Mensual</button>
+            <button class="tab" onclick="showTab(1)">💉 Vitaminización</button>
+            <button class="tab" onclick="showTab(2)">🦠 Desparasitación</button>
+            <button class="tab" onclick="showTab(3)">🏪 Establo Especial</button>
+            <button class="tab" onclick="showTab(4)">📋 Lista de Cotización</button>
+        </div>
+        
+        <div class="content">
+            <!-- TAB 1: Cronograma Mensual -->
+            <div class="tab-content active">
+                <button class="btn-print" onclick="window.print()">🖨️ Imprimir Cronograma</button>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Vitaminización</th>
+                                <th>Desparasitación</th>
+                                <th>Dosis Adultos (+100kg)</th>
+                                <th>Inicio (Enero 2026)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>MES 1</strong></td>
+                                <td>Calfon B12</td>
+                                <td>Bimec LA</td>
+                                <td>12-15 ml / 1 ml x 50kg</td>
+                                <td>Enero 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 2</strong></td>
+                                <td>Complex B + Ca/P</td>
+                                <td>—</td>
+                                <td>10-15 ml</td>
+                                <td>Febrero 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 3</strong></td>
+                                <td>Tonophosphan B12</td>
+                                <td>Nexplatino</td>
+                                <td>10-12 ml / 1 ml x 50kg</td>
+                                <td>Marzo 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 4</strong></td>
+                                <td>ADE Inyectable</td>
+                                <td>—</td>
+                                <td>8-10 ml</td>
+                                <td>Abril 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 5</strong></td>
+                                <td>Aminomix Bovinos</td>
+                                <td>Levamisol 10%</td>
+                                <td>10-12 ml / 1 ml x 10kg</td>
+                                <td>Mayo 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 6</strong></td>
+                                <td>Micromin 4</td>
+                                <td>—</td>
+                                <td>100g/semana libre acceso</td>
+                                <td>Junio 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 7</strong></td>
+                                <td>Reinicia Ciclo</td>
+                                <td>Alben-Tricla (Fasciola)</td>
+                                <td>— / 1 ml x 10kg oral</td>
+                                <td>Julio 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 9</strong></td>
+                                <td>—</td>
+                                <td>Pour-On (Externo)</td>
+                                <td>1 ml x 10kg dorsal</td>
+                                <td>Septiembre 2026</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MES 11</strong></td>
+                                <td>—</td>
+                                <td>Ganador-E</td>
+                                <td>1 ml x 25kg</td>
+                                <td>Noviembre 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- TAB 2: Vitaminización Detallada -->
+            <div class="tab-content">
+                <h2 style="color: #667eea; margin-bottom: 20px;">💉 Protocolo de Vitaminización Mensual</h2>
+                
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">1</div>
+                        <div class="month-title">ENERO - Energía Metabólica + Hígado</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ CALFON B12 – Virbac</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Vitamina B12, Calcio, Fósforo orgánico, Dextrosa</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Adultos (300-450kg):</div>
+                                <div class="info-value">12-15 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Terneras (120-200kg):</div>
+                                <div class="info-value">5-10 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Intramuscular profunda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">2</div>
+                        <div class="month-title">FEBRERO - Metabolismo + Estructura</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ COMPLEXO B + Ca & P – Vetnil</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Complejo B completo, Calcio, Fósforo, Magnesio</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Adultos:</div>
+                                <div class="info-value">10-15 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Terneras:</div>
+                                <div class="info-value">5-8 ml IM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">3</div>
+                        <div class="month-title">MARZO - Impulso Fuerte / Reproducción</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ TONOPHOSPHAN + B12 – Bayer</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Butafosfan, Cianocobalamina (B12)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Adultos:</div>
+                                <div class="info-value">10-12 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Terneras:</div>
+                                <div class="info-value">5-7 ml IM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">4</div>
+                        <div class="month-title">ABRIL - Pelo, Hueso, Inmunidad, Fertilidad</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ ADE INYECTABLE – Bayer o König</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Vitamina A, Vitamina D3, Vitamina E</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Adultos:</div>
+                                <div class="info-value">8-10 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Terneras:</div>
+                                <div class="info-value">3-5 ml IM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">5</div>
+                        <div class="month-title">MAYO - Desarrollo Muscular / Crecimiento</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ AMINOMIX BOVINOS – Vetnil</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Aminoácidos esenciales, Vitaminas, Minerales traza, Energía no proteica</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Adultos:</div>
+                                <div class="info-value">10-12 ml IM</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis Terneras:</div>
+                                <div class="info-value">5-7 ml IM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">6</div>
+                        <div class="month-title">JUNIO - Descanso Hepático + Mineralización</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ MICROMIN 4 – Somex</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Minerales traza, Selenio, Zinc, Cobre, Yodo, Magnesio</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">100g por animal/semana libre acceso</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Alternativa:</div>
+                                <div class="info-value">En melaza 1-2 veces/semana</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert">
+                    <div class="alert-title">🔄 CICLO CONTINUO</div>
+                    <p>A partir del MES 7, se reinicia el ciclo volviendo al MES 1 (Calfon B12). Este protocolo se repite durante todo el año para mantener óptimos niveles nutricionales.</p>
+                </div>
+            </div>
+            
+            <!-- TAB 3: Desparasitación -->
+            <div class="tab-content">
+                <h2 style="color: #667eea; margin-bottom: 20px;">🦠 Protocolo de Desparasitación Anual</h2>
+                
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">1</div>
+                        <div class="month-title">ENERO - Desparasitación Total de Arranque</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ BIMEC L.A. (Ivermectina 3.15%)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Acción:</div>
+                                <div class="info-value">Interno + externo, larga acción</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 50 kg</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">IM profunda</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">2 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">3</div>
+                        <div class="month-title">MARZO - Rotación Inteligente</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ NEXPLATINO (Doramectina 1%)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Acción:</div>
+                                <div class="info-value">Interno + externo, evita resistencias</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 50 kg</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Subcutánea</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">2 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">5</div>
+                        <div class="month-title">MAYO - Gastrointestinales Resistentes</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ LEVAMISOL 10%</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Acción:</div>
+                                <div class="info-value">Lombrices del digestivo</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 10 kg</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Intramuscular</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">10 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">7</div>
+                        <div class="month-title">JULIO - Fasciola Hepática + Resistentes</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ FASNILEX / ALBEN-TRICLA (Albendazol + Triclabendazol)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Acción:</div>
+                                <div class="info-value">Fasciola (común en Urrao), Tenias, Lombrices resistentes, Gastrointestinales</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 10 kg</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Oral (pistola dosificadora)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">10 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">9</div>
+                        <div class="month-title">SEPTIEMBRE - Control 100% Externo</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ POUR-ON (Fipronil o Cipermetrina)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Marcas recomendadas:</div>
+                                <div class="info-value">Ectonil, Fiprolav, Barrage, Cypermix</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 10 kg (según producto)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Dorsal (línea del lomo)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">10 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">11</div>
+                        <div class="month-title">NOVIEMBRE - Limpieza Final del Año</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">⭐ GANADOR-E (Desparasitante Inyectable)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Composición:</div>
+                                <div class="info-value">Ivermectina + vitaminas + minerales</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Dosis:</div>
+                                <div class="info-value">1 ml / 25 kg</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Intramuscular</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Animal 100kg:</div>
+                                <div class="info-value">4 ml total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert">
+                    <div class="alert-title">🔄 ROTACIÓN DE PRINCIPIOS ACTIVOS</div>
+                    <p>Es fundamental rotar entre diferentes principios activos (Ivermectina → Doramectina → Levamisol → Albendazol+Triclabendazol) para evitar resistencias parasitarias y mantener la efectividad del programa.</p>
+                </div>
+            </div>
+
+            <!-- TAB 4: Protocolo Establo -->
+            <div class="tab-content">
+                <h2 style="color: #667eea; margin-bottom: 20px;">🏪 Protocolo Especial para Animales de Establo</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em;">Para Gyr, Gyrolando, novillas grandes y vacas en establo - Suplementación con productos EDO</p>
+                
+                <div class="alert">
+                    <div class="alert-title">⚠️ REGLAS IMPORTANTES</div>
+                    <p><strong>NO combinar EDO COMPLEX con:</strong> Calfon B12, Vetnil Complex, Tonophosphan, Aminomix (evita sobrecarga de complejo B)</p>
+                    <p><strong>NO usar EDO ENERGYTECH</strong> el mismo día de dosis inyectada fuerte. Esperar 48 horas.</p>
+                    <p><strong>NO dar 2 productos EDO juntos</strong> el mismo día.</p>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">1</div>
+                        <div class="month-title">ENERO - Calfon B12 + EDO Cozink</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Vitamina: CALFON B12 (12-15 ml IM)</div>
+                        <div class="product-name" style="color: #11998e;">✅ Permitido: EDO COZINK</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Dosis EDO Cozink:</div>
+                                <div class="info-value">10-15 ml por animal</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Oral o en concentrado</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Frecuencia:</div>
+                                <div class="info-value">Cada 15 días</div>
+                            </div>
+                            <div class="info-item" style="background: #fff3cd; border-left-color: #ffc107;">
+                                <div class="info-label">❌ NO usar este mes:</div>
+                                <div class="info-value">EDO Complex, EDO Energytech</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">2</div>
+                        <div class="month-title">FEBRERO - Complex B + EDO Complex</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Vitamina: COMPLEXO B + Ca/P Vetnil (10-15 ml IM)</div>
+                        <div class="product-name" style="color: #11998e;">✅ Permitido: EDO COMPLEX</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Dosis EDO Complex:</div>
+                                <div class="info-value">10 ml adultos</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Frecuencia:</div>
+                                <div class="info-value">1 vez por semana (4 semanas)</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Vía:</div>
+                                <div class="info-value">Oral mezclado en alimento</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Objetivo:</div>
+                                <div class="info-value">Subir condición corporal, pelo, apetito e inmunidad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">3</div>
+                        <div class="month-title">MARZO - Tonophosphan + EDO Modifor</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Vitamina: TONOPHOSPHAN + B12 (10-12 ml IM)</div>
+                        <div class="product-name" style="color: #11998e;">✅ Permitido: EDO MODIFOR</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Dosis EDO Modifor:</div>
+                                <div class="info-value">10 ml por animal</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Frecuencia:</div>
+                                <div class="info-value">Cada 15 días</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Función:</div>
+                                <div class="info-value">Regula metabolismo sin competir con Tonophosphan</div>
+                            </div>
+                            <div class="info-item" style="background: #fff3cd; border-left-color: #ffc107;">
+                                <div class="info-label">❌ NO mezclar:</div>
+                                <div class="info-value">Complejo B adicional</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">4</div>
+                        <div class="month-title">ABRIL - ADE + EDO Energytech</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Vitamina: ADE INYECTABLE (8-10 ml IM)</div>
+                        <div class="product-name" style="color: #11998e;">✅ Permitido: EDO ENERGYTECH</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Dosis EDO Energytech:</div>
+                                <div class="info-value">10-15 ml por animal</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Frecuencia:</div>
+                                <div class="info-value">1 vez por semana</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Ideal para:</div>
+                                <div class="info-value">Animales de exposición, estabulados, en recuperación</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Beneficio:</div>
+                                <div class="info-value">Energía limpia + pelo brillante</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">5</div>
+                        <div class="month-title">MAYO - Aminomix + EDO Cozink o Complex</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Vitamina: AMINOMIX BOVINOS (10-12 ml IM)</div>
+                        <div class="product-name" style="color: #11998e;">✅ Permitidos: EDO COZINK o EDO COMPLEX (según necesidad)</div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Si pelo opaco:</div>
+                                <div class="info-value">EDO Cozink cada 15 días</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Si animal bajo:</div>
+                                <div class="info-value">EDO Complex 1 vez/semana</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Recomendación:</div>
+                                <div class="info-value">Elegir UNO según condición del animal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card">
+                    <div class="month-header">
+                        <div class="month-number">6</div>
+                        <div class="month-title">JUNIO - Micromin 4 + TODOS LOS EDO</div>
+                    </div>
+                    <div class="product-section">
+                        <div class="product-name">✅ Mineral: MICROMIN 4 (100g/semana libre acceso)</div>
+                        <div class="product-name" style="color: #11998e;">✅✅✅ MES DE ORO: TODOS LOS EDO PERMITIDOS</div>
+                        <div class="info-grid">
+                            <div class="info-item" style="background: #d4edda; border-left-color: #28a745;">
+                                <div class="info-label">✅ EDO Cozink:</div>
+                                <div class="info-value">Cada 15 días</div>
+                            </div>
+                            <div class="info-item" style="background: #d4edda; border-left-color: #28a745;">
+                                <div class="info-label">✅ EDO Complex:</div>
+                                <div class="info-value">1 vez por semana</div>
+                            </div>
+                            <div class="info-item" style="background: #d4edda; border-left-color: #28a745;">
+                                <div class="info-label">✅ EDO Energytech:</div>
+                                <div class="info-value">1-2 veces por semana</div>
+                            </div>
+                            <div class="info-item" style="background: #d4edda; border-left-color: #28a745;">
+                                <div class="info-label">✅ EDO Modifor:</div>
+                                <div class="info-value">1 vez por semana</div>
+                            </div>
+                        </div>
+                        <div class="alert" style="margin-top: 15px; background: #d1ecf1; border-left-color: #17a2b8;">
+                            <div class="alert-title" style="color: #0c5460;">💪 MES ESTRATÉGICO</div>
+                            <p style="color: #0c5460;">Este es el mes para levantar la condición corporal total. No hay vitaminas inyectadas, por lo que puedes maximizar suplementación oral sin riesgo de sobrecarga.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container" style="margin-top: 30px;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📋 Tabla Resumen Establo</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Vitaminas Inyectables</th>
+                                <th>Productos EDO Permitidos</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>Calfon B12</td>
+                                <td>Cozink</td>
+                                <td>Cada 15 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>Complex Vetnil</td>
+                                <td>EDO Complex</td>
+                                <td>1 vez/semana</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>Tonophosphan</td>
+                                <td>EDO Modifor</td>
+                                <td>Cada 15 días</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>ADE</td>
+                                <td>EDO Energytech</td>
+                                <td>1 vez/semana</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Aminomix</td>
+                                <td>Cozink o Complex (según necesidad)</td>
+                                <td>Variado</td>
+                            </tr>
+                            <tr style="background: #d4edda;">
+                                <td><strong>6</strong></td>
+                                <td>Solo Micromin 4</td>
+                                <td><strong>TODOS los EDO permitidos</strong></td>
+                                <td>1-2 veces/semana</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 5: Lista de Cotización -->
+            <div class="tab-content">
+                <h2 style="color: #667eea; margin-bottom: 20px;">📋 Lista Completa de Productos para Cotización 2026</h2>
+                
+                <div class="alert">
+                    <div class="alert-title">📝 INSTRUCCIONES</div>
+                    <p>Esta lista incluye todos los medicamentos, vitaminas, desparasitantes y elementos necesarios para el cronograma anual 2026. Cotizar todos los productos según las cantidades indicadas.</p>
+                </div>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">💉 VITAMINAS Y MINERALES</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Presentación</th>
+                                <th>Cantidad Anual Necesaria</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Calfon B12</strong> (Virbac)</td>
+                                <td>500ml</td>
+                                <td>3 frascos</td>
+                                <td>Para MES 1 y MES 7 (reinicio ciclo)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Complexo B + Ca & P</strong> (Vetnil)</td>
+                                <td>500ml</td>
+                                <td>3 frascos</td>
+                                <td>Para MES 2 y MES 8</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tonophosphan + B12</strong> (Bayer)</td>
+                                <td>250ml</td>
+                                <td>5 frascos</td>
+                                <td>Para MES 3 y MES 9</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ADE Inyectable</strong> (Bayer o König)</td>
+                                <td>100ml</td>
+                                <td>9 frascos</td>
+                                <td>Para MES 4 y MES 10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aminomix Bovinos</strong> (Vetnil)</td>
+                                <td>500ml</td>
+                                <td>3 frascos</td>
+                                <td>Para MES 5 y MES 11</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Micromin 4</strong> (Somex)</td>
+                                <td>25kg (bulto)</td>
+                                <td>2 bultos</td>
+                                <td>Para MES 6 y MES 12 (100g/semana por animal)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">🦠 DESPARASITANTES</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Presentación</th>
+                                <th>Cantidad Anual Necesaria</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bimec LA</strong> (Ivermectina 3.15%)</td>
+                                <td>500ml</td>
+                                <td>1 frasco</td>
+                                <td>MES 1 - Interno + externo, larga acción</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nexplatino</strong> (Doramectina 1%)</td>
+                                <td>500ml</td>
+                                <td>1 frasco</td>
+                                <td>MES 3 - Rotación de principio activo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Levamisol 10%</strong></td>
+                                <td>500ml</td>
+                                <td>4 frascos</td>
+                                <td>MES 5 - Gastrointestinales resistentes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alben-Tricla / Fasnilex</strong> (Albendazol + Triclabendazol)</td>
+                                <td>1L</td>
+                                <td>2 litros</td>
+                                <td>MES 7 - Fasciola hepática + resistentes (vía oral)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pour-On</strong> (Fipronil o Cipermetrina)</td>
+                                <td>1L</td>
+                                <td>2 litros</td>
+                                <td>MES 9 - Control externo (Ectonil, Fiprolav, Barrage, Cypermix)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ganador-E</strong> (Ivermectina + vitaminas)</td>
+                                <td>500ml</td>
+                                <td>2 frascos</td>
+                                <td>MES 11 - Limpieza final del año</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">🏪 PRODUCTOS EDO (Opcional - Para Animales de Establo)</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Presentación</th>
+                                <th>Cantidad Anual Necesaria</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>EDO Cozink</strong></td>
+                                <td>1L</td>
+                                <td>4 litros</td>
+                                <td>MES 1, 5, 6 y según necesidad</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EDO Complex</strong></td>
+                                <td>1L</td>
+                                <td>2 litros</td>
+                                <td>MES 2, 5, 6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EDO Energytech</strong></td>
+                                <td>1L</td>
+                                <td>2 litros</td>
+                                <td>MES 4, 6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EDO Modifor</strong></td>
+                                <td>1L</td>
+                                <td>2 litros</td>
+                                <td>MES 3, 6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="color: #667eea; margin: 30px 0 20px 0;">🔧 MATERIALES Y EQUIPOS</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elemento</th>
+                                <th>Especificación</th>
+                                <th>Cantidad Anual Necesaria</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Jeringas</strong></td>
+                                <td>20ml</td>
+                                <td>50 unidades</td>
+                                <td>Para aplicaciones inyectables</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agujas</strong></td>
+                                <td>18G x 1½ pulgadas</td>
+                                <td>200 unidades</td>
+                                <td>Para inyecciones intramusculares y subcutáneas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alcohol antiséptico</strong></td>
+                                <td>1L</td>
+                                <td>3 litros</td>
+                                <td>Para desinfección del sitio de inyección</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guantes desechables</strong></td>
+                                <td>Caja de 100 unidades</td>
+                                <td>2 cajas</td>
+                                <td>Para bioseguridad durante aplicaciones</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pistola dosificadora</strong></td>
+                                <td>Para aplicación oral</td>
+                                <td>1 unidad</td>
+                                <td>Para Alben-Tricla (desparasitante oral)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Algodón o gasas</strong></td>
+                                <td>Estériles</td>
+                                <td>2 paquetes</td>
+                                <td>Para limpieza y desinfección</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert" style="margin-top: 30px; background: #d1ecf1; border-left-color: #17a2b8;">
+                    <div class="alert-title" style="color: #0c5460;">📌 NOTAS IMPORTANTES PARA LA COTIZACIÓN</div>
+                    <ul style="margin-left: 20px; margin-top: 10px; color: #0c5460;">
+                        <li>Las cantidades están calculadas para un hato de 50 animales adultos (+100kg, promedio 350kg)</li>
+                        <li>Los productos EDO son opcionales y solo se requieren para animales de establo (Gyr, Gyrolando, novillas grandes)</li>
+                        <li>Verificar fechas de vencimiento de todos los productos</li>
+                        <li>Solicitar precios por unidad y por volumen (descuentos por cantidad)</li>
+                        <li>Confirmar disponibilidad de todos los productos antes de realizar el pedido</li>
+                        <li>Para Pour-On, cotizar las marcas recomendadas: Ectonil, Fiprolav, Barrage o Cypermix</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            tabs[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>
